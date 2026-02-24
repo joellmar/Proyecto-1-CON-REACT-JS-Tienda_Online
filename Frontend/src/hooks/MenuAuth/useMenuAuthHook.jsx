@@ -7,6 +7,8 @@ export const useMenuAuthHook = () => {
   const [dataUser, setDataUser] = useState([]);
   const [token, setToken] = useState(Cookies.get("token") || "");
 
+  const API = import.meta.env.VITE_API_URL;
+
   const handleClickRegister = () => {
     setIsOpenAccount(!isOpenAccount);
   };
@@ -31,7 +33,7 @@ export const useMenuAuthHook = () => {
     const userData = { email, password };
 
     try {
-      const response = await fetch("http://localhost:3000/api/v1/login", {
+      const response = await fetch(`http://${API}/api/v1/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
@@ -79,7 +81,7 @@ export const useMenuAuthHook = () => {
       if (token) {
         try {
           const response = await fetch(
-            "http://localhost:3000/api/v1/verify-token",
+            `http://${API}/api/v1/verify-token`,
             {
               method: "POST",
               headers: {
@@ -107,7 +109,7 @@ export const useMenuAuthHook = () => {
       if (token) {
         try {
           const response = await fetch(
-            "http://localhost:3000/api/v1/refresh-token",
+            `http://${API}/api/v1/refresh-token`,
             {
               method: "POST",
               headers: {

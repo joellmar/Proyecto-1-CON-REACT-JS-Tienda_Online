@@ -18,6 +18,8 @@ import {
   LoginData,
 } from "../../services/Jsons/DataInput/DataInput";
 
+const API = import.meta.env.VITE_API_URL;
+
 export const MenuAuthComponent = () => {
   const {
     isOpenAccount,
@@ -38,7 +40,7 @@ export const MenuAuthComponent = () => {
             onSubmit={(e) =>
               handleSubmitDataRegister(
                 e,
-                "http://localhost:3000/api/v1/register"
+                `http://${API}/api/v1/register`
               )
             }
           >
@@ -83,7 +85,7 @@ export const MenuAuthComponent = () => {
             className="form__menu__auth"
             method="POST"
             onSubmit={(e) =>
-              handleSubmitData(e, "http://localhost:3000/api/v1/login")
+              handleSubmitData(e, `http://${API}/api/v1/login`)
             }
           >
             <div className="container__menu__auth__form">

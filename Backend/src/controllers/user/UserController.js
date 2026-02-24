@@ -103,14 +103,13 @@ export const UserController = {
             const token = generateToken(user);
 
             const cookieOptions = {
-                httpyOnly: true,
+                httpOnly: true,
                 secure: true,
-                maxAge: 1000 * 60 * 60 * 24 * 7,
-                sameSite: "strict",
+                sameSite: "none",
                 path: "/",
-                domain: "localhost",
-                maxAge: 24 * 60 * 60 * 1000 // 1 día de duración
-            }
+                maxAge: 24 * 60 * 60 * 1000
+            };
+
 
             // Establecer la cookie en la respuesta
             res.cookie('token', token, cookieOptions);
@@ -192,14 +191,12 @@ export const UserController = {
             const tokenNew = generateToken(user);
 
             const cookieOptions = {
-                httpyOnly: true,
+                httpOnly: true,
                 secure: true,
-                maxAge: 1000 * 60 * 60 * 24 * 7,
-                sameSite: "strict",
+                sameSite: "none",
                 path: "/",
-                domain: "localhost",
-                maxAge: 24 * 60 * 60 * 1000 // 1 día de duración
-            }
+                maxAge: 24 * 60 * 60 * 1000
+            };
 
             // Establecer la cookie en la respuesta
             res.cookie('token', tokenNew, cookieOptions);
